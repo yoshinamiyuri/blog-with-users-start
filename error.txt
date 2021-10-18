@@ -1,0 +1,61 @@
+①循環参照っぽい
+Error Message
+ImportError: cannot import name 'CreatePostForm' from partially initialized module 'forms' (most likely due to a circular import) (/Users/yuriyoshinami/Angela YU/blog-with-users-start/forms.py)
+
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+⭐️main.py
+from forms import CreatePostForm, RegisterForm
+
+⭐️forms.py
+from main import db
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+調べたサイト
+
+①What is a Circular Dependency?
+A circular dependency occurs when two or more modules depend on each other.
+This is due to the fact that each module is defined in terms of the other (See Figure 1).
+
+
+https://stackabuse.com/python-circular-imports/
+
+
+②Pythonで「most likely due to a circular import」エラーが出た場合の対処法
+コードの「imoprt pandas」で自分自身のファイルを読み込んでいるため、だからエラー文にある
+「circular import（循環インポート）」となっているんですね。
+
+https://network-beginner.xyz/python_most-likely-due-to-a-circular-import_error
+
+③Rendering template gives "jinja2.exceptions.UndefinedError: 'form' is undefined"
+Asked 7 years, 11 months ago
+Active 1 year, 1 month ago
+Viewed 58k times
+
+https://stackoverflow.com/questions/19506109/rendering-template-gives-jinja2-exceptions-undefinederror-form-is-undefined
+
+
+^----------------------------------------------------^
+Difference Between "Text" and "String" datatype in SQLite
+https://stackoverflow.com/questions/11938401/difference-between-text-and-string-datatype-in-sqlite
+
+
+The subtle thing to note here is that SQLite does not enforce the data type of values you put into columns.
+ That means that you can put text into a numeric field, and so on.
+To understand the difference between your two SQL statements,
+check out section 2.1 Determination Of Column Affinity, which maps the column types
+you provide to the storage classes SQLite uses.
+
+In this case, the type string gets mapped to storage class NUMERIC via rule 5.
+Declaring the field as text in code would tell the DBMS to use the TEXT storage class.
+Again, since SQLite does not enforce the types of columns, your code will probably run fine
+when storing Strings as a NUMERIC column, as you note.
+
+As an alternative example, you could define a column with type INTERESTING STUFF, and
+that would be mapped to the INTEGER storage class, via rule 1.
+
+^----------------------------------------------------^
+Gravatar allows you to change the image that you use across the blog websites
+that use Gravatar here: http://en.gravatar.com/
+
+https://pythonhosted.org/Flask-Gravatar/
+https://flask-sqlalchemy.palletsprojects.com/en/2.x/queries/
+https://docs.sqlalchemy.org/en/13/orm/basic_relationships.html
